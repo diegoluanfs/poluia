@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80">
+  <defs>
+    <style>
+      .cls-1 { fill: url(#linear-gradient); }
+      .cls-2 { fill: #6a0cf8; }
+      .cls-3 { fill: #fff; }
+      .cls-4 { fill: #309; }
+      .text { font-family: Arial, sans-serif; font-weight: bold; font-size: 48px; fill: #6a0cf8; }
+    </style>
+    <linearGradient id="linear-gradient" x1="0" y1="40" x2="150" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset=".13" stop-color="#6a0cf8"/>
+      <stop offset=".56" stop-color="#fd16b8"/>
+      <stop offset=".97" stop-color="#fdba7f"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <!-- Background decoration -->
+    <rect class="cls-2" x="10" y="10" width="80" height="60" rx="10" />
+    <circle class="cls-1" cx="50" cy="40" r="40"/>
+    <!-- Logo Text -->
+    <text x="120" y="55" class="text">PoluIA</text>
+  </g>
+</svg>
