@@ -1,0 +1,110 @@
+/* Contêiner principal */
+.signup-container {
+    display: flex;
+    align-items: center; /* Alinha verticalmente no centro */
+    justify-content: center; /* Centraliza horizontalmente */
+    height: 100vh; /* Ocupa a altura total da tela */
+    width: 100%; /* Ocupa toda a largura */
+    padding: 2vw; /* Padding proporcional à largura da tela */
+    gap: 2vw; /* Espaço entre a logo e o formulário */
+}
+
+/* Logo */
+.Logo {
+    height: 20vh; /* Altura proporcional à altura da tela */
+    aspect-ratio: 1 / 1; /* Mantém a proporção quadrada */
+    background-image: url('./../../assets/EcoSense.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Formulário */
+.form-container {
+    height: 80%; /* 80% da altura da tela */
+    width: 70%; /* 70% da largura da tela */
+    background-color: #edeefc;
+    padding: 5%; /* Padding proporcional à largura do contêiner */
+    border-radius: 1rem; /* Bordas arredondadas proporcionais */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do formulário */
+.form-container h1 {
+    text-align: center;
+    font-size: 2.5vw; /* Tamanho responsivo baseado na largura da tela */
+    color: #383e8a;
+    margin-bottom: 2vh; /* Espaço proporcional abaixo do título */
+}
+
+/* Campos de entrada */
+.input-field {
+    position: relative;
+    width: 100%;
+    margin: 2vh 0; /* Margem vertical proporcional */
+    height: 6vh; /* Altura proporcional */
+}
+
+.input-field input {
+    width: 100%; /* Ocupa toda a largura disponível */
+    height: 100%; /* Acompanha a altura definida */
+    background-color: #ffffff;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.8rem; /* Bordas arredondadas proporcionais */
+    font-size: 1.5vw; /* Tamanho da fonte responsivo */
+    color: #9e9e9e;
+    padding: 0 1vw; /* Padding interno horizontal proporcional */
+}
+
+.input-field input::placeholder {
+    color: #9e9e9e;
+    font-size: 1.5vw; /* Placeholder também responsivo */
+}
+
+.input-field .icon {
+    position: absolute;
+    right: 1vw; /* Ícone posicionado proporcionalmente */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2vw; /* Tamanho responsivo do ícone */
+    color: #9e9e9e;
+}
+
+/* Botão */
+button {
+    width: 100%;
+    height: 6vh; /* Altura proporcional à tela */
+    background-color: #383e8a;
+    border: none;
+    outline: none;
+    border-radius: 1rem; /* Bordas arredondadas proporcionais */
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1); /* Sombra responsiva */
+    cursor: pointer;
+    font-size: 1.5vw; /* Fonte responsiva */
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 2vh; /* Margem superior proporcional */
+}
+
+button:hover {
+    background-color: #2e347a; /* Cor mais escura no hover */
+}
+
+/* Link para login */
+.signup-link p {
+    font-size: 1.5vw; /* Fonte responsiva */
+    text-align: center;
+    color: #9e9e9e;
+    margin-top: 2vh; /* Margem superior proporcional */
+}
+
+.signup-link p a {
+    color: #383e8a;
+    text-decoration: none;
+    font-size: 1.5vw; /* Fonte responsiva */
+}
+
+.signup-link p a:hover {
+    text-decoration: underline;
+}
