@@ -1,4 +1,3 @@
-import { FaUser, FaLock } from 'react-icons/fa';
 import { useState } from 'react';
 import { Link } from 'react-router-dom'; // Importar o Link
 
@@ -41,7 +40,6 @@ const SignUp = () => {
                             placeholder="E-mail corporativo"
                             onChange={(e) => setCorporateEmail(e.target.value)}
                         />
-                        <FaUser className="icon" />
                     </div>
                     <div className="input-field">
                         <input
@@ -49,7 +47,6 @@ const SignUp = () => {
                             placeholder="Nome da empresa"
                             onChange={(e) => setCompanyName(e.target.value)}
                         />
-                        <FaUser className="icon" />
                     </div>
                     <div className="input-field">
                         <input
@@ -57,7 +54,6 @@ const SignUp = () => {
                             placeholder="Ramo da empresa"
                             onChange={(e) => setCompanyNiche(e.target.value)}
                         />
-                        <FaUser className="icon" />
                     </div>
                     <div className="input-field">
                         <input
@@ -65,7 +61,6 @@ const SignUp = () => {
                             placeholder="CNPJ"
                             onChange={(e) => setCNPJ(e.target.value)}
                         />
-                        <FaUser className="icon" />
                     </div>
                     <div className="input-field">
                         <input
@@ -73,7 +68,6 @@ const SignUp = () => {
                             placeholder="Senha"
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <FaLock className="icon" />
                     </div>
 
                     <button>Cadastrar-se</button>

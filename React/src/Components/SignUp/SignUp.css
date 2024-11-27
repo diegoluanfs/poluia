@@ -11,7 +11,7 @@
 
 /* Logo */
 .Logo {
-    height: 20vh; /* Altura proporcional à altura da tela */
+    height: 15vh; /* Altura proporcional à altura da tela */
     aspect-ratio: 1 / 1; /* Mantém a proporção quadrada */
     background-image: url('./../../assets/EcoSense.png');
     background-size: contain;

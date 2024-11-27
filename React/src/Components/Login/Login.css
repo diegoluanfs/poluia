@@ -15,7 +15,7 @@
 /* Logo */
 .Logo {
     width: 30%; /* Responsivo com base na largura da viewport */
-    height: 15vh; /* Responsivo com base na altura da viewport */
+    height: 10vh; /* Responsivo com base na altura da viewport */
     background-image: url('./../../assets/EcoSense.png');
     background-size: contain;
     background-position: center;
