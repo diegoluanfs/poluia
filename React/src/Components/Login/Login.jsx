@@ -1,16 +1,64 @@
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useState } from 'react';
-import { Link } from 'react-router-dom'; // Importar o Link
+import { Link, useNavigate } from 'react-router-dom'; // Hook para redirecionamento
+import Swal from 'sweetalert2'; // Importa o SweetAlert2
+import { query, where, collection, getDocs } from 'firebase/firestore';
+import { db } from './../../../firebase/firebaseConfig'; // Importa o Firestore
 import './Login.css';
-import './../../App.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Inicializa o hook para redirecionamento
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    alert(`Enviando os dados: ${username} - ${password}`);
+
+    try {
+      // Consulta no Firestore para verificar o usuário
+      const usersRef = collection(db, 'users');
+      const q = query(usersRef, where('email', '==', username));
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.empty) {
+        // Caso o e-mail não seja encontrado
+        Swal.fire({
+          title: 'Erro',
+          text: 'Usuário ou senha inválidos',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+        return;
+      }
+
+      // Verifica a senha do usuário
+      const userDoc = querySnapshot.docs[0].data();
+      if (userDoc.password === password) {
+        // Caso o e-mail e a senha estejam corretos
+        Swal.fire({
+          title: 'Sucesso',
+          text: 'Usuário correto',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+        });
+      } else {
+        // Caso a senha esteja incorreta
+        Swal.fire({
+          title: 'Erro',
+          text: 'Usuário ou senha inválidos',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+      }
+    } catch (error) {
+      console.error('Erro ao verificar o usuário:', error);
+      Swal.fire({
+        title: 'Erro',
+        text: 'Ocorreu um erro ao tentar fazer login. Tente novamente mais tarde.',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
+    }
   };
 
   return (
@@ -51,7 +99,15 @@ const Login = () => {
               <input type="checkbox" />
               Lembre de mim
             </label>
-            <a href="#">Esqueci minha senha?</a>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/forgotpassword'); // Redireciona para a página de recuperação de senha
+              }}
+            >
+              Esqueci minha senha?
+            </a>
           </div>
 
           {/* Botão de Login */}

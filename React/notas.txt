@@ -1,0 +1,12 @@
+//regra de produção:
+/*
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Permite leitura e escrita para todas as coleções
+    match /{document=**} {
+      allow read, write: if true; // ATENÇÃO: Apenas para desenvolvimento
+    }
+  }
+}
+*/

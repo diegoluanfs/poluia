@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2"; // Importa o SweetAlert2
 import { createUser } from "./../../../firebase/userService";
 import { validateSignUpForm } from "./../../utils/validators";
 import "./SignUp.css";
@@ -14,8 +15,7 @@ const SignUp = () => {
     password: "",
   });
   const [errors, setErrors] = useState({});
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate(); // Inicializa o hook para redirecionar
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,9 +23,7 @@ const SignUp = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setErrors({});
-    setSuccessMessage("");
-    setErrorMessage("");
+    setErrors({}); // Limpa erros ao submeter
 
     // Validação dos dados
     const validationErrors = validateSignUpForm(formData);
@@ -34,13 +32,27 @@ const SignUp = () => {
       return;
     }
 
-    // Cadastrar usuário
+    // Tenta cadastrar o usuário
     const result = await createUser(formData);
     if (result.success) {
-      setSuccessMessage("Usuário cadastrado com sucesso!");
-      setFormData({ email: "", name: "", niche: "", cnpj: "", password: "" });
+      // Alerta de sucesso
+      Swal.fire({
+        title: "Sucesso!",
+        text: "Usuário cadastrado com sucesso!",
+        icon: "success",
+        confirmButtonText: "Ok",
+      }).then(() => {
+        // Redireciona para a tela de login
+        navigate("/login");
+      });
     } else {
-      setErrorMessage("Erro ao cadastrar usuário: " + result.error);
+      // Alerta de erro
+      Swal.fire({
+        title: "Erro",
+        text: result.error, // Mostra a mensagem de erro
+        icon: "error",
+        confirmButtonText: "Tentar novamente",
+      });
     }
   };
 
@@ -50,8 +62,6 @@ const SignUp = () => {
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <h1>Cadastro</h1>
-          {successMessage && <p className="success-message">{successMessage}</p>}
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
 
           <div className="input-field">
             <input
