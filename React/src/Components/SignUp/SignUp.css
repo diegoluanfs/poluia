@@ -22,9 +22,9 @@
 /* Formulário */
 .form-container {
     height: 80%; /* 80% da altura da tela */
-    width: 70%; /* 70% da largura da tela */
+    width: 50%; /* 70% da largura da tela */
     background-color: #edeefc;
-    padding: 5%; /* Padding proporcional à largura do contêiner */
+    padding: 3rem; /* Padding proporcional à largura do contêiner */
     border-radius: 1rem; /* Bordas arredondadas proporcionais */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
