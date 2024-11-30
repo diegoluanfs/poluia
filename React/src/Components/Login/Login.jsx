@@ -1,27 +1,26 @@
+import PropTypes from 'prop-types'; // Importa o prop-types
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Hook para redirecionamento
-import Swal from 'sweetalert2'; // Importa o SweetAlert2
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { query, where, collection, getDocs } from 'firebase/firestore';
-import { db } from './../../../firebase/firebaseConfig'; // Importa o Firestore
+import { db } from './../../../firebase/firebaseConfig';
 import './Login.css';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Inicializa o hook para redirecionamento
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // Consulta no Firestore para verificar o usuário
       const usersRef = collection(db, 'users');
       const q = query(usersRef, where('email', '==', username));
       const querySnapshot = await getDocs(q);
 
       if (querySnapshot.empty) {
-        // Caso o e-mail não seja encontrado
         Swal.fire({
           title: 'Erro',
           text: 'Usuário ou senha inválidos',
@@ -31,18 +30,18 @@ const Login = () => {
         return;
       }
 
-      // Verifica a senha do usuário
       const userDoc = querySnapshot.docs[0].data();
       if (userDoc.password === password) {
-        // Caso o e-mail e a senha estejam corretos
+        onLogin({ name: userDoc.name, email: userDoc.email, photo: userDoc.photo });
         Swal.fire({
           title: 'Sucesso',
           text: 'Usuário correto',
           icon: 'success',
           confirmButtonText: 'Ok',
+        }).then(() => {
+          navigate('/dashboard');
         });
       } else {
-        // Caso a senha esteja incorreta
         Swal.fire({
           title: 'Erro',
           text: 'Usuário ou senha inválidos',
@@ -63,15 +62,10 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      {/* Logo */}
       <div className="Logo" />
-
-      {/* Formulário */}
       <div className="container">
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>
-
-          {/* Campo de E-mail */}
           <div className="input-field">
             <input
               type="email"
@@ -81,8 +75,6 @@ const Login = () => {
             />
             <FaUser className="icon" />
           </div>
-
-          {/* Campo de Senha */}
           <div className="input-field">
             <input
               type="password"
@@ -92,28 +84,16 @@ const Login = () => {
             />
             <FaLock className="icon" />
           </div>
-
-          {/* Lembre de mim e Esqueci minha senha */}
           <div className="recall-forget">
             <label>
               <input type="checkbox" />
               Lembre de mim
             </label>
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate('/forgotpassword'); // Redireciona para a página de recuperação de senha
-              }}
-            >
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate('/forgotpassword'); }}>
               Esqueci minha senha?
             </a>
           </div>
-
-          {/* Botão de Login */}
           <button type="submit">Entrar</button>
-
-          {/* Link para Cadastro */}
           <div className="signup-link">
             <p>
               Não tem uma conta?
@@ -124,6 +104,11 @@ const Login = () => {
       </div>
     </div>
   );
+};
+
+// Define os tipos das propriedades esperadas
+Login.propTypes = {
+  onLogin: PropTypes.func.isRequired, // Declara que onLogin é obrigatório e deve ser uma função
 };
 
 export default Login;

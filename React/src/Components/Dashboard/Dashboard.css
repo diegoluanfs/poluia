@@ -1,0 +1,103 @@
+/* Contêiner principal do dashboard */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Barra superior */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #383e8a;
+    padding: 1rem 2rem;
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Logo */
+.dashboard-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Menu central */
+.dashboard-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.dashboard-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.dashboard-menu a:hover {
+    text-decoration: underline;
+    color: #d1d1f0;
+}
+
+/* Informações do usuário */
+.dashboard-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Espaço entre o nome e a foto/ícone */
+}
+
+/* Nome do usuário */
+.dashboard-user-name {
+    font-size: 1rem;
+    font-weight: bold;
+    white-space: nowrap; /* Evita quebra de linha no nome */
+    color: #ffffff;
+}
+
+/* Foto do usuário */
+.dashboard-user-photo,
+.dashboard-user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+}
+
+/* Ícone do usuário (fallback) */
+.dashboard-user-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    color: #383e8a;
+    font-size: 1.5rem; /* Tamanho do ícone */
+}
+
+/* Conteúdo principal */
+.dashboard-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.dashboard-content h1 {
+    font-size: 2rem;
+    color: #383e8a;
+    margin-bottom: 1rem;
+}
+
+.dashboard-content p {
+    font-size: 1rem;
+    color: #666666;
+}
