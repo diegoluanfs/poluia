@@ -32,7 +32,12 @@ const Login = ({ onLogin }) => {
 
       const userDoc = querySnapshot.docs[0].data();
       if (userDoc.password === password) {
-        onLogin({ name: userDoc.name, email: userDoc.email, photo: userDoc.photo });
+        const userData = { name: userDoc.name, email: userDoc.email, photo: userDoc.photo };
+
+        // Armazena os dados do usuário no local storage
+        localStorage.setItem('user', JSON.stringify(userData));
+
+        onLogin(userData);
         Swal.fire({
           title: 'Sucesso',
           text: 'Usuário correto',

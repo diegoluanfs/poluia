@@ -5,7 +5,6 @@
     height: 100vh;
     width: 100vw;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
 }
 
 /* Barra superior */
@@ -13,11 +12,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #383e8a;
+    background-color: #ffffff;
     padding: 1rem 2rem;
-    color: #ffffff;
+    color: gray;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
 }
 
 /* Logo */
@@ -34,7 +32,7 @@
 }
 
 .dashboard-menu a {
-    color: #ffffff;
+    color: gray;
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.2s ease-in-out;
@@ -42,25 +40,25 @@
 
 .dashboard-menu a:hover {
     text-decoration: underline;
-    color: #d1d1f0;
+    color: #d6d9ff;
 }
 
 /* Informações do usuário */
 .dashboard-user {
     display: flex;
     align-items: center;
-    gap: 1rem; /* Espaço entre o nome e a foto/ícone */
+    gap: 1rem;
 }
 
 /* Nome do usuário */
 .dashboard-user-name {
     font-size: 1rem;
     font-weight: bold;
-    white-space: nowrap; /* Evita quebra de linha no nome */
-    color: #ffffff;
+    white-space: nowrap;
+    color: gray;
 }
 
-/* Foto do usuário */
+/* Foto ou ícone do usuário */
 .dashboard-user-photo,
 .dashboard-user-icon {
     width: 40px;
@@ -70,34 +68,85 @@
     border: 2px solid #ffffff;
 }
 
-/* Ícone do usuário (fallback) */
 .dashboard-user-icon {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
-    color: #383e8a;
-    font-size: 1.5rem; /* Tamanho do ícone */
+    font-size: 1.5rem;
 }
 
 /* Conteúdo principal */
 .dashboard-content {
-    flex: 1;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 2rem;
+    gap: 1rem;
+    width: 100%; /* Garante que o pai ocupe toda a largura disponível */
+    box-sizing: border-box; /* Inclui padding no cálculo do tamanho */
+    height: 100vh;
 }
 
-.dashboard-content h1 {
-    font-size: 2rem;
-    color: #383e8a;
+/* Lado esquerdo e direito */
+.dashboard {
+    flex: 1; /* Permite que o contêiner cresça */
+    max-width: 45vw; /* Limita a largura máxima a 80% da viewport */
+    width: 100%; /* Garante que o contêiner use 100% do espaço permitido */
+    height: calc(100vh - 80px);
+    padding: 1rem;
+    justify-content: left;
+    background-color: transparent;
+    border-radius: 8px;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+    text-align: center;
+}
+
+.dashboard h1 {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.dashboard p {
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.dashboard h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
     margin-bottom: 1rem;
 }
 
-.dashboard-content p {
+/* Cards de poluentes */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* Estilo dos cards */
+.card {
+    flex: 1 1 calc(50% - 1rem);
+    background-color: #d6d9ff;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    color: black;
+}
+
+.card p {
     font-size: 1rem;
-    color: #666666;
+    color: black;
+}
+
+/* Mensagem de erro */
+.error-message {
+    color: red;
+    font-size: 1rem;
+    margin-top: 1rem;
 }
